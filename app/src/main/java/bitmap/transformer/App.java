@@ -12,20 +12,37 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
+    public static void main(String[] args) throws IOException{
+        BitMap withBorder = new  BitMap("border_Image", "./app/src/main/resources" , "./app/src/main/resources/sample.bmp");
+        BitMap noBlue = new  BitMap("filtered_Image", "./app/src/main/resources" , "./app/src/main/resources/sample.bmp");
+        BitMap noGreen = new  BitMap("filtered_Imageg", "./app/src/main/resources" , "./app/src/main/resources/sample.bmp");
+        withBorder.cyanBorder();                noBlue.filterBlue();
+        noGreen.filterGreen();
+//        For Command line run
+        String transName = args[0] , outPut = args[1] , inPut = args[2];
+        try{
+            if(transName.equals("border")) {
+                BitMap x = new  BitMap(transName, outPut , inPut);
+                x.cyanBorder();
+            }
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
-            App app = new App();
-            Class class1 = app.getClass();
-            URL url = class1.getResource("../../sample.bmp/");
-        File file = new File(url.toURI());
-        BufferedImage image = ImageIO.read(file);
-        BitMap x = new  BitMap("immm" , "./app/src/main/resources" , url.getPath());
+            else if(transName.equals("filter")) {
+                BitMap x = new  BitMap(transName, outPut , inPut);
+                x.filterBlue();
+            }
+        }
 
-        x.cyanBorder();
+        catch (IOException e) {
+            System.out.println("An error occured with the path");
+        }
     }
+
+//    "./app/src/main/resources"
+//    "./app/src/main/resources/sample.bmp"
 }

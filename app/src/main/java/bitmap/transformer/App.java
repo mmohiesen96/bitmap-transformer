@@ -24,10 +24,20 @@ public class App {
         BitMap noGreen = new  BitMap("filtered_Imageg", "./app/src/main/resources" , "./app/src/main/resources/sample.bmp");
         withBorder.cyanBorder();                noBlue.filterBlue();
         noGreen.filterGreen();
+
+        // mohammad jaradat
+        BitMap borderRed = new BitMap("OrangeBorder", "./src", "./app/src/main/resources/sample.bmp");
+        BitMap twoColorBorder = new BitMap("twoColorBorder", "./src", "./app/src/main/resources/sample.bmp");
+        BitMap magentaAndCyanBorder = new BitMap("magentaAndCyanBorder", "./src", "./app/src/main/resources/sample.bmp");
+
+        borderRed.OrangeBorder();        twoColorBorder.twoColorBorder();
+        magentaAndCyanBorder.magentaAndCyanBorder();
+
+
 //        For Command line run
         String transName = args[0] , outPut = args[1] , inPut = args[2];
         try{
-            if(transName.equals("border")) {
+            if(transName.equals("cyanBorder")) {
                 BitMap x = new  BitMap(transName, outPut , inPut);
                 x.cyanBorder();
             }
@@ -35,6 +45,19 @@ public class App {
             else if(transName.equals("filter")) {
                 BitMap x = new  BitMap(transName, outPut , inPut);
                 x.filterBlue();
+            }
+
+            if(transName.equals("OrangeBorder")) {
+                BitMap x = new  BitMap(transName, outPut , inPut);
+                x.OrangeBorder();
+            }
+            if (transName.equals("twoColorBorder")){
+                BitMap x = new  BitMap(transName, outPut , inPut);
+                x.twoColorBorder();
+            }
+            if (transName.equals("magentaAndCyanBorder")){
+                BitMap x = new  BitMap(transName, outPut , inPut);
+                x.magentaAndCyanBorder();
             }
         }
 

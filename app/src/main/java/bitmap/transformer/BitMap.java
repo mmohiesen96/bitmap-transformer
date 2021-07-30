@@ -92,5 +92,86 @@ public class BitMap {
         return null;
     }
 
+    public void OrangeBorder() throws IOException {
+        System.out.println("in red border 1");
+        int borderWidth = 5;
+        try {
+
+            BufferedImage img = ImageIO.read(this.bitImage);
+            System.out.println("in red border 2");
+            for (int x = 0; x < img.getWidth(); x++) {
+                for (int y = 0; y < img.getHeight(); y++) {
+                    if (y < borderWidth || y + borderWidth >= img.getHeight() || x < borderWidth || x + borderWidth >= img.getWidth()) {
+                        img.setRGB(x, y, ((int)(Color.RED.getRGB()*0.50)));
+                    }
+
+                }
+//                System.out.println("in red border 3");
+            }
+            this.bitOutputFile(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void twoColorBorder() throws IOException {
+        System.out.println("in red border 1");
+        int borderWidth = 5;
+        try {
+
+            BufferedImage img = ImageIO.read(this.bitImage);
+            System.out.println("in red border 2");
+            for (int x = 0; x < img.getWidth(); x++) {
+                for (int y = 0; y < img.getHeight(); y++) {
+                    if (y < borderWidth || y + borderWidth >= img.getHeight()) {
+                        img.setRGB(x, y, (int) (Color.blue.getRGB() * 0.332));
+
+
+                    }
+                    if (x < borderWidth || x + borderWidth >= img.getWidth()) {
+                        img.setRGB(x, y, (int) (Color.blue.getRGB() * 0.194));
+                    }
+
+                }
+//                System.out.println("in red border 3");
+            }
+            this.bitOutputFile(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void magentaAndCyanBorder() throws IOException {
+        System.out.println("in red border 1");
+
+        try {
+            boolean ss = true;
+            int borderWidth = 10;
+            BufferedImage img = ImageIO.read(this.bitImage);
+            System.out.println("in red border 2");
+            for (int x = 0; x < img.getWidth(); x++) {
+                for (int y = 0; y < img.getHeight(); y++) {
+                    if (ss) {
+//                        System.out.println("ss true");
+                        if (y < borderWidth || y + borderWidth >= img.getHeight()|| x < borderWidth || x + borderWidth >= img.getWidth()) {
+                            img.setRGB(x, y, ((Color.magenta.getRGB())));
+                            ss = false;
+                        }
+                    } else {
+//                        System.out.println("ss fasle");
+                        if (y < borderWidth || y + borderWidth >= img.getHeight()|| x < borderWidth || x + borderWidth >= img.getWidth()) {
+                            img.setRGB(x, y, ((Color.cyan.getRGB())));
+                            ss = true;
+                        }
+                    }
+
+                }
+//                System.out.println("in red border 3");
+            }
+            this.bitOutputFile(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
